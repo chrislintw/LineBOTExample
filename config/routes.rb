@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :users do
+    resources :messages
+    member do
+      post 'send_text'
+    end
+  end
+  root 'users#index'
+  post 'linebot/callback' => 'messages#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

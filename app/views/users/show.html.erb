@@ -1,0 +1,28 @@
+<h1><%= "#{@user.name}(#{@user.mid})" %></h1>
+<div class="row">
+  <div class="col-sm-6 col-xs-12">
+    <table class="table messages">
+      <thead>
+        <tr>
+          <th>Message </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.messages.each do |message| %>
+          <tr>
+            <td class="<%='text-right' if message.action == 'sent' %>"><%= message.content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+
+</div>
+
+
+<%= form_tag "/users/#{@user.id}/send_text",id: 'send_text_form', remote: true do %>
+  <%= text_field_tag :text %>
+  <%= submit_tag 'Send' %>
+<% end %>

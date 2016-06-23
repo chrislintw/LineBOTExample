@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User_mid</th>
+          <th>Name</th>
+          <th >
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.mid %></td>
+            <td><%= user.name %></td>
+            <td>
+              <%= link_to 'Show', user_path(user) %>
+              <%= link_to 'Edit', edit_user_path(user) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-xs-6">
+    <h2>Messages</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User id </th>
+          <th>User name</th>
+          <th>Message </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messages.each do |message| %>
+          <tr>
+            <td><%= message.user.id %></td>
+            <td><%= message.user.name %></td>
+            <td><%= message.content %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
